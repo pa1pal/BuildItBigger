@@ -25,9 +25,10 @@ dependencies {
     final SUPPORT_LIBRARY_VERSION = '24.1.1'
     final PLAY_SERVICES = '9.4.0'
     final DAGGER_VERSION = '2.7'
-
     compile fileTree(include: ['*.jar'], dir: 'libs')
 
+    compile 'org.glassfish.main:javax.annotation:4.0-b33'
+    compile project(':jokes')
     compile "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
     // Added for AdMob
     compile "com.google.android.gms:play-services-ads:$PLAY_SERVICES"
