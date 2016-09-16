@@ -1,7 +1,6 @@
 package com.udacity.gradle.builditbigger.ui.injection.module;
 
-import com.example.Jokes;
-import com.udacity.gradle.builditbigger.ui.activity.MainActivity;
+import pa1pal.udacity.jokesprovider.Jokes;
 import com.udacity.gradle.builditbigger.ui.activity.MyApplication;
 
 import javax.inject.Singleton;
@@ -10,7 +9,7 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * User: pa1pal
+ * author: pa1pal
  * Date: 9/16/16
  */
 @Module

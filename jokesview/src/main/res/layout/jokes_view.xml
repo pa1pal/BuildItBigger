@@ -11,6 +11,5 @@
         android:id="@+id/joke_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Joke" />
-
+        android:text="@string/getjoke" />
 </RelativeLayout>

@@ -7,7 +7,7 @@ import com.udacity.gradle.builditbigger.ui.injection.module.component.ActivityCo
 import com.udacity.gradle.builditbigger.ui.injection.module.component.DaggerActivityComponent;
 
 /**
- * User: pa1pal
+ * author: pa1pal
  * Date: 9/16/16
  */
 public class MyApplication extends Application {

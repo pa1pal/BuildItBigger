@@ -99,6 +99,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-clearcut/9.4.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-gass/9.4.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.4.0/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.jakewharton/butterknife/8.4.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental-safeguard" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/instant-run-support" />
@@ -131,8 +132,11 @@
     <orderEntry type="library" exported="" name="multidex-1.0.1" level="project" />
     <orderEntry type="library" exported="" name="play-services-ads-9.4.0" level="project" />
     <orderEntry type="library" exported="" name="dagger-2.7" level="project" />
+    <orderEntry type="library" exported="" name="butterknife-annotations-8.4.0" level="project" />
+    <orderEntry type="library" exported="" name="butterknife-8.4.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-ads-lite-9.4.0" level="project" />
     <orderEntry type="library" exported="" name="javax.annotation-4.0-b33" level="project" />
-    <orderEntry type="module" module-name="jokes" exported="" />
+    <orderEntry type="module" module-name="jokesprovider" exported="" />
+    <orderEntry type="module" module-name="jokesview" exported="" />
   </component>
 </module>

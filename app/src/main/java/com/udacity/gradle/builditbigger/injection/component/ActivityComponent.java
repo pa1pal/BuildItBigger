@@ -8,7 +8,7 @@ import javax.inject.Singleton;
 import dagger.Component;
 
 /**
- * User: pa1pal
+ * author: pa1pal
  * Date: 9/16/16
  */
 @Singleton
