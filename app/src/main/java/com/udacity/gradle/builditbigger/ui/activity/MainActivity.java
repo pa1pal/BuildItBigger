@@ -1,23 +1,44 @@
 package com.udacity.gradle.builditbigger.ui.activity;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.Jokes;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.udacity.gradle.builditbigger.R;
 
+import javax.inject.Inject;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity implements View.OnClickListener {
+
+    @Inject
+    Jokes jokes;
+    private Button getJoke;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
 
+        ((MyApplication)this.getApplicationContext()).getComponent().injectMain(this);
+
+        getJoke = (Button) findViewById(R.id.getjoke);
+        getJoke.setOnClickListener(this);
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        // Create an ad request. Check logcat output for the hashed device ID to
+        // get test ads on a physical device. e.g.
+        // "Use AdRequest.Builder.addTestDevice("ABCDEF012345") to get test ads on this device."
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
+        mAdView.loadAd(adRequest);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -41,9 +62,8 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void tellJoke(View view) {
-        Toast.makeText(this, "derp", Toast.LENGTH_SHORT).show();
+    @Override
+    public void onClick(View view) {
+        Toast.makeText(this, jokes.getMeJoke(), Toast.LENGTH_SHORT).show();
     }
-
-
 }
