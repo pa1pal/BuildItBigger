@@ -1,6 +1,7 @@
 package com.udacity.gradle.builditbigger.ui.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,16 +13,23 @@ import pa1pal.udacity.jokesprovider.Jokes;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.udacity.gradle.builditbigger.R;
+import com.udacity.gradle.builditbigger.api.Api;
+import com.udacity.gradle.builditbigger.api.Constants;
+import com.udacity.gradle.builditbigger.api.Pojo;
 
 import javax.inject.Inject;
 
 import pa1pal.udacity.jokesview.JokesView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
     @Inject
     Jokes jokes;
     private Button getJoke;
+    Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,10 +74,26 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        Intent intent = new Intent(this, JokesView.class );
-        String joke = jokes.getMeJoke();
-        intent.putExtra(JokesView.JOKE_KEY, joke);
-        startActivity(intent);
+        Api apiCall = Constants.getRetrofitInstance(this);
+        Call<Pojo> call = apiCall.getRandomJoke();
+        call.enqueue(new Callback<Pojo>() {
+            @Override
+            public void onResponse(Call<Pojo> call, Response<Pojo> response) {
+                if (response.isSuccessful()){
+                    Pojo jokesResponse = response.body();
+                    Intent intent = new Intent(context, JokesView.class );
+                    //String joke = jokes.getMeJoke();
+                    intent.putExtra(JokesView.JOKE_KEY, jokesResponse.getData());
+                    startActivity(intent);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Pojo> call, Throwable t) {
+
+            }
+        });
+
         //Toast.makeText(this, jokes.getMeJoke(), Toast.LENGTH_SHORT).show();
     }
 }

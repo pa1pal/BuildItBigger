@@ -1,7 +1,7 @@
-package com.udacity.gradle.builditbigger.ui.injection.module.component;
+package com.udacity.gradle.builditbigger.injection.component;
 
+import com.udacity.gradle.builditbigger.injection.module.ActivityModule;
 import com.udacity.gradle.builditbigger.ui.activity.MainActivity;
-import com.udacity.gradle.builditbigger.ui.injection.module.ActivityModule;
 
 import javax.inject.Singleton;
 

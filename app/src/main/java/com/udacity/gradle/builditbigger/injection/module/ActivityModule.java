@@ -1,4 +1,6 @@
-package com.udacity.gradle.builditbigger.ui.injection.module;
+package com.udacity.gradle.builditbigger.injection.module;
+
+import android.content.Context;
 
 import pa1pal.udacity.jokesprovider.Jokes;
 import com.udacity.gradle.builditbigger.ui.activity.MyApplication;
@@ -15,11 +17,16 @@ import dagger.Provides;
 @Module
 public class ActivityModule {
 
-    //private final MainActivity mainActivity;
-    private final MyApplication application;
+    private final Context context;
 
-    public ActivityModule(MyApplication application) {
-        this.application = application;
+    public ActivityModule(Context context){
+        this.context = context;
+    }
+
+    @Provides
+    @Singleton
+    public Context provideContext(){
+        return this.context;
     }
 
     @Provides
@@ -27,9 +34,4 @@ public class ActivityModule {
     Jokes provideJoke(){
         return new Jokes();
     }
-
-//    @Provides @Singleton
-//    MainActivity provideActivity(){
-//        return new MainActivity(new Jokes());
-//    }
 }

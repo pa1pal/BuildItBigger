@@ -7,15 +7,21 @@ public class Jokes {
     private final int totalJokes;
     private ArrayList<String> jokes = new ArrayList<String>();
     public Jokes() {
-        jokes.add("example");
-        jokes.add("example");
-        jokes.add("example");
-        jokes.add("example");
-        jokes.add("example");
-        jokes.add("example");
-        jokes.add("example");
-        jokes.add("example");
-        jokes.add("example");
+        jokes.add("Funny Joke");
+        jokes.add("Funny Joke");
+        jokes.add("Funny Joke");
+        jokes.add("Funny Joke");
+        jokes.add("Funny Joke");
+        jokes.add("Funny Joke");
+        jokes.add("Funny Joke");
+        jokes.add("Funny Joke");
+        jokes.add("Funny Joke");
+        jokes.add("Funny Joke");
+        jokes.add("Funny Joke");
+        jokes.add("Funny Joke");
+        jokes.add("Funny Joke");
+        jokes.add("Funny Joke");
+        jokes.add("Funny Joke");
 
         totalJokes = jokes.size();
     }

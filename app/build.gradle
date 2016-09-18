@@ -25,18 +25,25 @@ dependencies {
     final SUPPORT_LIBRARY_VERSION = '24.1.1'
     final PLAY_SERVICES = '9.4.0'
     final DAGGER_VERSION = '2.7'
+    final RETROFIT_VERSION = '2.1.0'
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':jokesprovider')
-
     compile project(':jokesview')
-
-    compile "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
-    // Added for AdMob
-    compile "com.google.android.gms:play-services-ads:$PLAY_SERVICES"
-    compile "com.google.dagger:dagger:$DAGGER_VERSION"
-    apt "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
+    compile project(path: ':backend', configuration: 'android-endpoints')
     compile project(path: ':backend', configuration: 'android-endpoints')
     compile 'org.glassfish.main:javax.annotation:4.0-b33'
     compile 'com.jakewharton:butterknife:8.4.0'
-    compile project(path: ':backend', configuration: 'android-endpoints')
+    compile 'com.google.android.gms:play-services-ads:9.4.0'
+    compile "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
+    compile "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
+    compile "com.squareup.retrofit2:adapter-rxjava:$RETROFIT_VERSION"
+    compile 'com.google.code.gson:gson:2.7'
+    compile 'io.reactivex:rxjava:1.2.0'
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
+
+    compile "com.google.android.gms:play-services-ads:$PLAY_SERVICES"
+    compile "com.google.dagger:dagger:$DAGGER_VERSION"
+    apt "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
+
 }

@@ -2,9 +2,9 @@ package com.udacity.gradle.builditbigger.ui.activity;
 
 import android.app.Application;
 
-import com.udacity.gradle.builditbigger.ui.injection.module.ActivityModule;
-import com.udacity.gradle.builditbigger.ui.injection.module.component.ActivityComponent;
-import com.udacity.gradle.builditbigger.ui.injection.module.component.DaggerActivityComponent;
+import com.udacity.gradle.builditbigger.injection.component.ActivityComponent;
+import com.udacity.gradle.builditbigger.injection.component.DaggerActivityComponent;
+import com.udacity.gradle.builditbigger.injection.module.ActivityModule;
 
 /**
  * author: pa1pal
@@ -17,11 +17,11 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         component = DaggerActivityComponent.builder()
-                .activityModule(new ActivityModule(this))
+                .activityModule(new ActivityModule(getApplicationContext()))
                 .build();
     }
 
     public ActivityComponent getComponent(){
-        return component;
+        return this.component;
     }
 }
