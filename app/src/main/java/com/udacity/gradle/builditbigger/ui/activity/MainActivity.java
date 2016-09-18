@@ -36,7 +36,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ((MyApplication)this.getApplicationContext()).getComponent().injectMain(this);
+        //((MyApplication)this.getApplicationContext()).getComponent().injectMain(this);
 
         getJoke = (Button) findViewById(R.id.getjoke);
         getJoke.setOnClickListener(this);
@@ -82,7 +82,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 if (response.isSuccessful()){
                     Pojo jokesResponse = response.body();
                     Intent intent = new Intent(context, JokesView.class );
-                    //String joke = jokes.getMeJoke();
                     intent.putExtra(JokesView.JOKE_KEY, jokesResponse.getData());
                     startActivity(intent);
                 }
@@ -93,7 +92,5 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
             }
         });
-
-        //Toast.makeText(this, jokes.getMeJoke(), Toast.LENGTH_SHORT).show();
     }
 }
