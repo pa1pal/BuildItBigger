@@ -13,10 +13,12 @@ public class Constants {
 
     static Api api;
 
-    public static Api getRetrofitInstance(Context context){
+    public static final String base_url = "https://builditbigger-143808.appspot.com/_ah/api/myApi/v1/";
+
+    public static Api getRetrofitInstance(){
 
         Retrofit retrofit= new Retrofit.Builder()
-                .baseUrl(context.getString(R.string.base_url))
+                .baseUrl(base_url)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

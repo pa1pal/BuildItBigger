@@ -16,9 +16,6 @@ import com.udacity.gradle.builditbigger.api.Api;
 import com.udacity.gradle.builditbigger.api.Constants;
 import com.udacity.gradle.builditbigger.api.Pojo;
 
-import javax.inject.Inject;
-
-import pa1pal.udacity.jokesprovider.Jokes;
 import pa1pal.udacity.jokesview.JokesView;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,8 +23,6 @@ import retrofit2.Response;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
-    @Inject
-    Jokes jokes;
     private Button getJoke;
     Context context = this;
 
@@ -74,7 +69,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        Api apiCall = Constants.getRetrofitInstance(this);
+        Api apiCall = Constants.getRetrofitInstance();
         Call<Pojo> call = apiCall.getRandomJoke();
         call.enqueue(new Callback<Pojo>() {
             @Override
