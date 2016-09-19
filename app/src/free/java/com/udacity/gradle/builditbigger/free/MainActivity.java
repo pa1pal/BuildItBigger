@@ -4,11 +4,14 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -70,32 +73,46 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setIndeterminate(true);
-        progressDialog.setMessage(getString(R.string.loading));
-        progressDialog.show();
-        Api apiCall = Constants.getRetrofitInstance();
-        Call<Pojo> call = apiCall.getRandomJoke();
-        call.enqueue(new Callback<Pojo>() {
-            @Override
-            public void onResponse(Call<Pojo> call, Response<Pojo> response) {
-                if (progressDialog.isShowing())
-                    progressDialog.dismiss();
+        if (isConnected()){
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setIndeterminate(true);
+            progressDialog.setMessage(getString(R.string.loading));
+            progressDialog.show();
+            Api apiCall = Constants.getRetrofitInstance();
+            Call<Pojo> call = apiCall.getRandomJoke();
+            call.enqueue(new Callback<Pojo>() {
+                @Override
+                public void onResponse(Call<Pojo> call, Response<Pojo> response) {
+                    if (progressDialog.isShowing())
+                        progressDialog.dismiss();
 
-                if (response.isSuccessful()){
-                    Pojo jokesResponse = response.body();
-                    Intent intent = new Intent(context, JokesView.class );
-                    intent.putExtra(JokesView.JOKE_KEY, jokesResponse.getData());
-                    startActivity(intent);
+                    if (response.isSuccessful()){
+                        Pojo jokesResponse = response.body();
+                        Intent intent = new Intent(context, JokesView.class );
+                        intent.putExtra(JokesView.JOKE_KEY, jokesResponse.getData());
+                        startActivity(intent);
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<Pojo> call, Throwable t) {
-                if (progressDialog.isShowing())
-                    progressDialog.dismiss();
+                @Override
+                public void onFailure(Call<Pojo> call, Throwable t) {
+                    if (progressDialog.isShowing())
+                        progressDialog.dismiss();
 
-            }
-        });
+                }
+            });
+        } else {
+            Toast.makeText(this, R.string.nointernet,Toast.LENGTH_LONG).show();
+        }
+
+    }
+
+    public boolean isConnected() {
+        ConnectivityManager connectivityManager = (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        if (activeNetworkInfo != null)
+            return activeNetworkInfo.isConnected();
+        else
+            return false;
     }
 }
