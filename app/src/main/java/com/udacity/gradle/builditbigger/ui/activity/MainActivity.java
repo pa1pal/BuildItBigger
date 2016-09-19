@@ -69,7 +69,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        Api apiCall = Constants.getRetrofitInstance(this);
+        Api apiCall = Constants.getRetrofitInstance();
         Call<Pojo> call = apiCall.getRandomJoke();
         call.enqueue(new Callback<Pojo>() {
             @Override

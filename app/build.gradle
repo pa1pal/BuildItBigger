@@ -11,7 +11,8 @@ android {
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
-        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled false
     }
     buildTypes {
         release {
@@ -30,15 +31,10 @@ dependencies {
     compile project(':jokesprovider')
     compile project(':jokesview')
     compile project(path: ':backend', configuration: 'android-endpoints')
-    compile project(path: ':backend', configuration: 'android-endpoints')
-    compile 'org.glassfish.main:javax.annotation:4.0-b33'
     compile 'com.jakewharton:butterknife:8.4.0'
-    compile 'com.google.android.gms:play-services-ads:9.4.0'
     compile "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
     compile "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
-    compile "com.squareup.retrofit2:adapter-rxjava:$RETROFIT_VERSION"
     compile "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
     compile "com.google.android.gms:play-services-ads:$PLAY_SERVICES"
-    compile 'junit:junit:4.12'
-    compile 'org.mockito:mockito-core:2.1.0-RC.1'
+    testCompile 'junit:junit:4.12'
 }
