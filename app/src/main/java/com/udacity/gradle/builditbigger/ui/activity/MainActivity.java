@@ -9,15 +9,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import pa1pal.udacity.jokesprovider.Jokes;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.udacity.gradle.builditbigger.R;
 import com.udacity.gradle.builditbigger.api.Api;
 import com.udacity.gradle.builditbigger.api.Constants;
 import com.udacity.gradle.builditbigger.api.Pojo;
-
-import javax.inject.Inject;
 
 import pa1pal.udacity.jokesview.JokesView;
 import retrofit2.Call;
@@ -26,8 +23,6 @@ import retrofit2.Response;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
-    @Inject
-    Jokes jokes;
     private Button getJoke;
     Context context = this;
 

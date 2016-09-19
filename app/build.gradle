@@ -37,13 +37,8 @@ dependencies {
     compile "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
     compile "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
     compile "com.squareup.retrofit2:adapter-rxjava:$RETROFIT_VERSION"
-    compile 'com.google.code.gson:gson:2.7'
-    compile 'io.reactivex:rxjava:1.2.0'
-    compile 'io.reactivex:rxandroid:1.2.1'
     compile "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
-
     compile "com.google.android.gms:play-services-ads:$PLAY_SERVICES"
-    compile "com.google.dagger:dagger:$DAGGER_VERSION"
-    apt "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
-
+    compile 'junit:junit:4.12'
+    compile 'org.mockito:mockito-core:2.1.0-RC.1'
 }
