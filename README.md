@@ -3,6 +3,7 @@
 Project 4 for Udacity Android Nanodegree
 
 ## Flow Diagram of the app
+![alt text](https://github.com/pa1pal/BuildItBigger/blob/master/screenshots/BuilditbiggerFlow.png)
 
 ## Project Components
 
