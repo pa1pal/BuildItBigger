@@ -66,11 +66,19 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage(getString(R.string.loading));
+        progressDialog.show();
+
         Api apiCall = Constants.getRetrofitInstance(this);
         Call<Pojo> call = apiCall.getRandomJoke();
         call.enqueue(new Callback<Pojo>() {
             @Override
             public void onResponse(Call<Pojo> call, Response<Pojo> response) {
+                if (progressDialog.isShowing())
+                    progressDialog.dismiss();
+
                 if (response.isSuccessful()){
                     Pojo jokesResponse = response.body();
                     Intent intent = new Intent(context, JokesView.class );
@@ -81,7 +89,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
             @Override
             public void onFailure(Call<Pojo> call, Throwable t) {
-
+                if (progressDialog.isShowing())
+                    progressDialog.dismiss();
             }
         });
     }
