@@ -1,4 +1,4 @@
-package com.udacity.gradle.builditbigger.ui.activity;
+package com.udacity.gradle.builditbigger.paid;
 
 import android.app.Activity;
 import android.content.Context;
@@ -16,6 +16,9 @@ import com.udacity.gradle.builditbigger.api.Api;
 import com.udacity.gradle.builditbigger.api.Constants;
 import com.udacity.gradle.builditbigger.api.Pojo;
 
+import javax.inject.Inject;
+
+import pa1pal.udacity.jokesprovider.Jokes;
 import pa1pal.udacity.jokesview.JokesView;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,6 +26,8 @@ import retrofit2.Response;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
+    @Inject
+    Jokes jokes;
     private Button getJoke;
     Context context = this;
 
@@ -35,14 +40,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         getJoke = (Button) findViewById(R.id.getjoke);
         getJoke.setOnClickListener(this);
-        AdView mAdView = (AdView) findViewById(R.id.adView);
-        // Create an ad request. Check logcat output for the hashed device ID to
-        // get test ads on a physical device. e.g.
-        // "Use AdRequest.Builder.addTestDevice("ABCDEF012345") to get test ads on this device."
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                .build();
-        mAdView.loadAd(adRequest);
     }
 
     @Override
@@ -69,7 +66,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        Api apiCall = Constants.getRetrofitInstance();
+        Api apiCall = Constants.getRetrofitInstance(this);
         Call<Pojo> call = apiCall.getRandomJoke();
         call.enqueue(new Callback<Pojo>() {
             @Override
