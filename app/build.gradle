@@ -44,6 +44,6 @@ dependencies {
     compile "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
     compile "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
     compile "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
-    compile "com.google.android.gms:play-services-ads:$PLAY_SERVICES"
+    freeCompile "com.google.android.gms:play-services-ads:$PLAY_SERVICES"
     compile 'junit:junit:4.12'
 }
